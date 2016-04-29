@@ -14,7 +14,7 @@ module.exports = (function() {
       });
     }
 
-    destroy() {
+    del() {
       AccessToken.logout(this.params, (err, accessToken) => {
         this.respond(err || accessToken);
       });
