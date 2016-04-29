@@ -1,0 +1,83 @@
+{
+
+  "migration_id": 2016042919094628,
+
+  "models": {
+
+    "AccessToken": {
+
+      "table": "access_tokens",
+
+      "columns": [
+        {"name": "id", "type": "serial", "properties": {"nullable":false,"primary_key":true,"auto_increment":true}},
+        {"name": "user_id", "type": "int", "properties": {}},
+        {"name": "access_token", "type": "string", "properties": {}},
+        {"name": "token_type", "type": "string", "properties": {}},
+        {"name": "expires_at", "type": "datetime", "properties": {}},
+        {"name": "ip_address", "type": "string", "properties": {}},
+        {"name": "created_at", "type": "datetime", "properties": {}},
+        {"name": "updated_at", "type": "datetime", "properties": {}}
+      ]
+
+    },
+
+    "Activity": {
+
+      "table": "activities",
+
+      "columns": [
+        {"name": "id", "type": "serial", "properties": {"nullable":false,"primary_key":true,"auto_increment":true}},
+        {"name": "plan_id", "type": "int", "properties": {}},
+        {"name": "user_id", "type": "int", "properties": {}},
+        {"name": "user_gen", "type": "boolean", "properties": {}},
+        {"name": "private", "type": "boolean", "properties": {}},
+        {"name": "desc", "type": "string", "properties": {}},
+        {"name": "lat", "type": "string", "properties": {}},
+        {"name": "long", "type": "string", "properties": {}},
+        {"name": "address", "type": "string", "properties": {}},
+        {"name": "city", "type": "string", "properties": {}},
+        {"name": "state", "type": "string", "properties": {}},
+        {"name": "neighborhood", "type": "string", "properties": {}},
+        {"name": "title", "type": "string", "properties": {}},
+        {"name": "duration", "type": "int", "properties": {}},
+        {"name": "created_at", "type": "datetime", "properties": {}},
+        {"name": "updated_at", "type": "datetime", "properties": {}}
+      ]
+
+    },
+
+    "Plan": {
+
+      "table": "plans",
+
+      "columns": [
+        {"name": "id", "type": "serial", "properties": {"nullable":false,"primary_key":true,"auto_increment":true}},
+        {"name": "user_id", "type": "int", "properties": {}},
+        {"name": "activity_id", "type": "int", "properties": {}},
+        {"name": "title", "type": "string", "properties": {}},
+        {"name": "desc", "type": "string", "properties": {}},
+        {"name": "likes", "type": "int", "properties": {}},
+        {"name": "created_at", "type": "datetime", "properties": {}},
+        {"name": "updated_at", "type": "datetime", "properties": {}}
+      ]
+
+    },
+
+    "User": {
+
+      "table": "users",
+
+      "columns": [
+        {"name": "id", "type": "serial", "properties": {"nullable":false,"primary_key":true,"auto_increment":true}},
+        {"name": "email", "type": "string", "properties": {"unique":true}},
+        {"name": "username", "type": "string", "properties": {"unique":true}},
+        {"name": "password", "type": "string", "properties": {}},
+        {"name": "created_at", "type": "datetime", "properties": {}},
+        {"name": "updated_at", "type": "datetime", "properties": {}}
+      ]
+
+    }
+
+  }
+
+}
