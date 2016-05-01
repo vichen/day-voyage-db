@@ -1,6 +1,8 @@
 {
 
-  "development": {},
+  "development": {
+    "users" : [{"username":"happy_sad","email":"emma@gmail.com","password":"11111"},{"username":"haveahappyday","email":"noah@gmail.com","password":"11111"},{"username":"SomethingNew","email":"olivia@gmail.com","password":"11111"},{"username":"5mileys","email":"liam@gmail.com","password":"11111"},{"username":"takes2long","email":"sophia@gmail.com","password":"11111"},{"username":"w8t4u","email":"mason@gmail.com","password":"11111"},{"username":"askme","email":"isabella@gmail.com","password":"11111"},{"username":"Bidwell","email":"jacob@gmail.com","password":"11111"},{"username":"massdebater","email":"ava@gmail.com","password":"11111"},{"username":"iluvmen","email":"william@gmail.com","password":"11111"}]
+    },
 
   "test": {},
 

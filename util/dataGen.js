@@ -56,5 +56,26 @@ module.export = (function() {
     'Daniel'
     ];
 
+/**
+ * generate mock users
+ * @param  {int} n number of users to generate
+ * @param  {string}  [optional] a user generated password
+ * @return {array}  of user objects
+ */
+  var genUsers = (n, password) => {
+    password = password || '11111';
+    n = n > usernames.length ? usernames.length : n;
+    let usernamesCopy = usernames.slice(0, n);
+    let users = usernamesCopy.map((username, i) => {
+      let name = names[i];
+      let email = `${name.toLowerCase()}@gmail.com`;
+      return new User(username, email, password);
+    });
+    return JSON.stringify(users)};
+  var mockUsers = genUsers(10);
+  console.log(mockUsers);
 
+  var genActivities = (n) => {
+
+  };
 })();
