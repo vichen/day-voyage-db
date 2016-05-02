@@ -1,11 +1,11 @@
-module.export = (function() {
+module.exports = (function() {
 
   'use strict';
 
   const Nodal = require('Nodal');
 
-  const mockUserInfo = Nodal.require('mockData/mockUsers.js');
-
+  const mockUserInfo = new Nodal.require('mockData/mockUsers.js');
+  // let mockUserInfo = require('./mockData/mockUsers.js');
   console.log(mockUserInfo);
 
   class User {
@@ -15,8 +15,6 @@ module.export = (function() {
       this.password = password;
     }
   }
-
-
 
 /**
  * generate mock users
@@ -28,14 +26,16 @@ module.export = (function() {
     password = password || '11111';
     n = n > mockUserInfo.usernames.length ? mockUserInfo.usernames.length : n;
     let usernames = mockUserInfo.usernames.slice(0, n);
-    let users = usernamesCopy.map((username, i) => {
+    let users = usernames.map((username, i) => {
       let name = mockUserInfo.names[i];
       let email = `${name.toLowerCase()}@gmail.com`;
       return new User(username, email, password);
     });
     return JSON.stringify(users)};
   var mockUsers = genUsers(10);
-  console.log(mockUsers);
+  // console.log(mockUsers);
+
+  // TODO: automate writing the users into the db.json for seed
 
   var genActivities = (n) => {
 

@@ -1,15 +1,10 @@
-module.export = (function() {
+module.exports = (function() {
 
   'use strict';
 /**
  * Use data for generation of mock users. Generatrors located in util/dataGen.js
  */
- class mockUserData {
-  constructor(usernames, names) {
-    this.usernames = usernames;
-    this.names = names;
-  }
- }
+
 
   var usernames = [
     'happy_sad',
@@ -57,7 +52,10 @@ module.export = (function() {
     'Daniel'
   ];
 
-  var userInfo = new mockUserData(usernames, names);
+  // var userInfo = new mockUserData(usernames, names);
 
-  return userInfo;
+  return {
+    usernames: usernames,
+    names: names
+  };
 })();
