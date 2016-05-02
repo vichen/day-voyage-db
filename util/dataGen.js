@@ -10,8 +10,10 @@ module.exports = (function() {
 
   const mockActivities = Nodal.require('mockData/mockActivities');
   // console.log(mockActivities);
+  const mockPlansData = Nodal.require('mockData/mockPlans');
+  // console.log(mockPlansData);
 
-  let activitiesPluckFromYelp = [];
+
   let activitySchema = ['plan_id', 'user_id', 'user_gen', 'private', 'desc', 'lat', 'long', 'address', 'city', 'state', 'neighborhood', 'title', 'duration'];
   let bool = [true, false];
 
@@ -71,7 +73,6 @@ module.exports = (function() {
       transformed.neighborhood = activity.location.neighborhoods;
       // TODO: cannot figure out how to pull a single item from neighborhood array, will have to be handled on client side
 
-
       return transformed;
     });
   };
@@ -87,6 +88,33 @@ module.exports = (function() {
     }));
   };
 
-  console.log(genActivities(transformedFromYelp));
+  // console.log(JSON.parse(genActivities(transformedFromYelp)));
+
+  class Plan {
+    constructor(user_id, activity_id, title, desc, likes) {
+      this.user_id = user_id;
+      this.activity_id = activity_id;
+      this.title = title;
+      this.desc = desc;
+      this.likes = likes;
+    }
+  }
+
+  var genPlans = (n) => {
+    n = mockPlansData.titles.length < n ? mockPlansData.titles.length : n;
+    var mockPlans = [];
+
+    for (var i = 0; i < n; i++) {
+      let user_id = Math.ceil(Math.random() * 10);
+      let activity_id = Math.ceil(Math.random() * 20);
+      let title = mockPlansData.titles[i];
+      let desc = mockPlansData.descriptions[i];
+      let likes = Math.floor(Math.random() * 100);
+      mockPlans.push(new Plan(user_id, activity_id, title, desc, likes));
+    }
+    return JSON.stringify(mockPlans);
+  }
+
+  // console.log(genPlans(5));
 
 })();

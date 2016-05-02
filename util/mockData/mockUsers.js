@@ -54,7 +54,7 @@ module.exports = (function() {
   // var userInfo = new mockUserData(usernames, names);
 
   return {
-    usernames: usernames,
-    names: names
+    usernames,
+    names
   };
 })();
