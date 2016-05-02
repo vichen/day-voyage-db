@@ -5,7 +5,6 @@ module.exports = (function() {
  * Use data for generation of mock users. Generatrors located in util/dataGen.js
  */
 
-
   var usernames = [
     'happy_sad',
     'haveahappyday',
