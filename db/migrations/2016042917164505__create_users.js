@@ -14,10 +14,25 @@ module.exports = (function() {
     up() {
 
       return [
-        this.createTable("users", 
-          [{"name":"email","type":"string","properties":{"unique":true}},
-          {"name":"username","type":"string","properties":{"unique":true}},
-          {"name":"password","type":"string"}])
+        this.createTable("users",
+          [
+            {
+              "name":"email",
+              "type":"string",
+              "properties":
+                {"unique":true}
+            },
+            {
+              "name":"username",
+              "type":"string",
+              "properties":
+                {"unique":true}
+            },
+            {
+              "name":"password",w
+              "type":"string"
+            }
+          ])
       ];
 
     }

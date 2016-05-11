@@ -50,6 +50,7 @@ module.exports = (function() {
 
   User.validates('email', 'must be valid', v => v && (v + '').match(/.+@.+\.\w+/i));
   User.validates('password', 'must be at least 5 characters in length', v => v && v.length >= 5);
+  User.hides('password');
 
   return User;
 
