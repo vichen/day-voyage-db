@@ -9,7 +9,6 @@ module.exports = (function() {
   class V1ActivitiesController extends AuthController {
 
     index() {
-
       Activity.query()
         .join('user','plan')
         .where(this.params.query)

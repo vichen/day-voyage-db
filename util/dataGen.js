@@ -82,13 +82,14 @@ module.exports = (function() {
   var genActivities = (activities) => {
     return JSON.stringify(activities.map((activity) => {
       var userId = Math.ceil(Math.random() * 10);
-      let mockActivity = new Activity(null, userId, bool[Math.round(Math.random())], bool[Math.round(Math.random())], 90);
+      var planId = Math.ceil(Math.random() * 5);
+      let mockActivity = new Activity(planId, userId, bool[Math.round(Math.random())], bool[Math.round(Math.random())], 90);
       Object.assign(mockActivity, activity);
       return mockActivity;
     }));
   };
 
-  // console.log(JSON.parse(genActivities(transformedFromYelp)));
+  // console.log((genActivities(transformedFromYelp)));
 
   class Plan {
     constructor(user_id, activity_id, title, desc, likes) {

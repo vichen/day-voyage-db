@@ -29,7 +29,7 @@ module.exports = (function() {
                 {"unique":true}
             },
             {
-              "name":"password",w
+              "name":"password",
               "type":"string"
             }
           ])
