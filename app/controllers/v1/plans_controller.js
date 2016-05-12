@@ -10,6 +10,8 @@ module.exports = (function() {
 
     index() {
 
+      console.log('<><><> insided index');
+
       Plan.query()
         .join('user','activity')
         .where(this.params.query)
@@ -23,6 +25,8 @@ module.exports = (function() {
 
     show() {
 
+      console.log('<><><><> inside show');
+
       Plan.find(this.params.route.id, (err, model) => {
 
         this.respond(err || model);
@@ -33,6 +37,7 @@ module.exports = (function() {
 
     create() {
 
+      console.log('<><><> inside create');
       this.authorize((accessToken, user) => {
 
         this.params.body.user_id = user.get('id');
@@ -42,7 +47,7 @@ module.exports = (function() {
           this.respond(err || model);
 
         });
-        
+
       })
 
 
@@ -67,6 +72,10 @@ module.exports = (function() {
       });
 
     }
+
+    // post() {
+    //   console.log('inside post <><><><>');
+    // }
 
   }
 
