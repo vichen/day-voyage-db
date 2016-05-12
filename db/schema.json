@@ -42,7 +42,7 @@
         {"name": "duration", "type": "int", "properties": {}},
         {"name": "costPerPerson", "type": "int", "properties": {}},
         {"name": "isYelp", "type": "boolean", "properties": {}},
-        {"name": "categories", "type": "json", "properties": {}},
+        {"name": "categories", "type": "string", "properties": {}},
         {"name": "created_at", "type": "datetime", "properties": {}},
         {"name": "updated_at", "type": "datetime", "properties": {}}
       ]
