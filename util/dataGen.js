@@ -48,12 +48,14 @@ module.exports = (function() {
   // TODO: automate writing the users into the db.json for seed
 
   class Activity {
-    constructor(plan_id, user_id, user_gen, priv, duration) {
+    constructor(plan_id, user_id, user_gen, priv, duration, isYelp, costPerPerson) {
         this.plan_id = plan_id;
         this.user_id = user_id;
         this.user_gen = user_gen;
         this.private = priv;
         this.duration = duration;
+        this.isYelp = isYelp || true;
+        this.costPerPerson = costPerPerson;
     }
   }
 
@@ -61,9 +63,8 @@ module.exports = (function() {
     return arr.map((activity) => {
       let transformed = Object.create(null);
 
-      // transformed.yelpRating = activity.rating;
       transformed.title = activity.name;
-      transformed.category = activity.categories[0];
+      transformed.categories = activity.categories[0];
       transformed.desc = activity.snippet_text;
       transformed.lat = activity.location.coordinate.latitude;
       transformed.long = activity.location.coordinate.longitude;
@@ -71,7 +72,6 @@ module.exports = (function() {
       transformed.city = activity.location.city;
       transformed.state = activity.location.state_code;
       transformed.neighborhood = activity.location.neighborhoods;
-      // TODO: cannot figure out how to pull a single item from neighborhood array, will have to be handled on client side
 
       return transformed;
     });
@@ -83,13 +83,16 @@ module.exports = (function() {
     return JSON.stringify(activities.map((activity) => {
       var userId = Math.ceil(Math.random() * 10);
       var planId = Math.ceil(Math.random() * 5);
-      let mockActivity = new Activity(planId, userId, bool[Math.round(Math.random())], bool[Math.round(Math.random())], 90);
+      var costPerPerson = Math.ceil(Math.random() * 50);
+      let mockActivity = new Activity(planId, userId, bool[Math.round(Math.random())], bool[Math.round(Math.random())], 90, true, costPerPerson);
       Object.assign(mockActivity, activity);
       return mockActivity;
     }));
   };
 
+  // console.log(JSON.parse((genActivities(transformedFromYelp))));
   // console.log((genActivities(transformedFromYelp)));
+
 
   class Plan {
     constructor(user_id, activity_id, title, desc, likes) {

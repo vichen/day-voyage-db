@@ -27,7 +27,10 @@ module.exports = (function() {
           {"name":"state","type":"string"},
           {"name":"neighborhood","type":"string"},
           {"name":"title","type":"string"},
-          {"name":"duration","type":"int"}])
+          {"name":"duration","type":"int"},
+          {"name":"costPerPerson", "type":"int"},
+          {"name": "isYelp", "type":"boolean"},
+          {"name": "categories", "type": "json"}])
       ];
 
     }
