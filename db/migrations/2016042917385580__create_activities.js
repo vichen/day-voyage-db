@@ -15,7 +15,8 @@ module.exports = (function() {
 
       return [
         this.createTable("activities",
-          [{"name":"plan_id","type":"int"},
+          [
+          // {"name":"plan_id","type":"int"},
           {"name":"user_id","type":"int"},
           {"name":"user_gen","type":"boolean"},
           {"name":"private","type":"boolean"},
@@ -30,7 +31,7 @@ module.exports = (function() {
           {"name":"duration","type":"int"},
           {"name":"costPerPerson", "type":"int"},
           {"name": "isYelp", "type":"boolean"},
-          {"name": "categories", "type": "json"}])
+          {"name": "categories", "type": "string"}])
       ];
 
     }

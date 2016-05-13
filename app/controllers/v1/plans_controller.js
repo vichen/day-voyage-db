@@ -5,6 +5,7 @@ module.exports = (function() {
   const Nodal = require('nodal');
   const Plan = Nodal.require('app/models/plan.js');
   const AuthController = Nodal.require('app/controllers/auth_controller.js');
+  const Activity = Nodal.require('app/models/activity.js')
 
   class V1PlansController extends AuthController {
 
@@ -25,7 +26,7 @@ module.exports = (function() {
 
     show() {
 
-      console.log('<><><><> inside show');
+      console.log('<><><> inside show');
 
       Plan.find(this.params.route.id, (err, model) => {
 
@@ -35,23 +36,23 @@ module.exports = (function() {
 
     }
 
-    create() {
+    // create() {
 
-      console.log('<><><> inside create');
-      this.authorize((accessToken, user) => {
+    //   console.log('<><><> inside create');
+    //   this.authorize((accessToken, user) => {
 
-        this.params.body.user_id = user.get('id');
+    //     this.params.body.user_id = user.get('id');
 
-        Plan.create(this.params.body, (err, model) => {
+    //     Plan.create(this.params.body, (err, model) => {
 
-          this.respond(err || model);
+    //       this.respond(err || model);
 
-        });
+    //     });
 
-      })
+    //   })
 
 
-    }
+    // }
 
     update() {
 
@@ -73,10 +74,44 @@ module.exports = (function() {
 
     }
 
-    // post() {
-    //   console.log('inside post <><><><>');
-    // }
+    post() {
+      console.log('inside post <><><><>');
 
+      this.authorize((accessToken, user) => {
+
+        this.params.body.user_id = user.get('id');
+
+        let activities = this.params.body.activities;
+
+        activities = JSON.parse(activities);
+
+        // console.log(typeof activities);
+
+        delete this.params.body.activities;
+
+        Plan.create(this.params.body, (err, model) => {
+
+          let updatedActivities = activities.map((activity, i) => {
+            console.log('>>>>>>>>>>model is', model);
+            return Activity
+              .query({id: activity.activity_id})
+              .update({plan_id: model.get('id')}, (err, activity) => {
+                if (err) {console.log('error:', err)}
+                // console.log('activity updated!:', activity);
+              });
+          });
+          // console.log(updatedActivities);
+          model = Object.assign(model, {activities: updatedActivities});
+          this.respond(err || model);
+
+          // if plan created, then update activities
+
+        });
+      });
+      // take activities from body
+      // take update activities
+
+    }
   }
 
   return V1PlansController;

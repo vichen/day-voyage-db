@@ -27,7 +27,6 @@
 
       "columns": [
         {"name": "id", "type": "serial", "properties": {"nullable":false,"primary_key":true,"auto_increment":true}},
-        {"name": "plan_id", "type": "int", "properties": {}},
         {"name": "user_id", "type": "int", "properties": {}},
         {"name": "user_gen", "type": "boolean", "properties": {}},
         {"name": "private", "type": "boolean", "properties": {}},
@@ -42,7 +41,7 @@
         {"name": "duration", "type": "int", "properties": {}},
         {"name": "costPerPerson", "type": "int", "properties": {}},
         {"name": "isYelp", "type": "boolean", "properties": {}},
-        {"name": "categories", "type": "json", "properties": {}},
+        {"name": "categories", "type": "string", "properties": {}},
         {"name": "created_at", "type": "datetime", "properties": {}},
         {"name": "updated_at", "type": "datetime", "properties": {}}
       ]
@@ -56,7 +55,6 @@
       "columns": [
         {"name": "id", "type": "serial", "properties": {"nullable":false,"primary_key":true,"auto_increment":true}},
         {"name": "user_id", "type": "int", "properties": {}},
-        {"name": "activity_id", "type": "int", "properties": {}},
         {"name": "title", "type": "string", "properties": {}},
         {"name": "desc", "type": "string", "properties": {}},
         {"name": "likes", "type": "int", "properties": {}},
