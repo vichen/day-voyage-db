@@ -27,7 +27,7 @@
 
       "columns": [
         {"name": "id", "type": "serial", "properties": {"nullable":false,"primary_key":true,"auto_increment":true}},
-        {"name": "activity_id", "type": "string", "properties": {}},
+        {"name": "plan_id", "type": "int", "properties": {}},
         {"name": "user_id", "type": "int", "properties": {}},
         {"name": "user_gen", "type": "boolean", "properties": {}},
         {"name": "private", "type": "boolean", "properties": {}},
