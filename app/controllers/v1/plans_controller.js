@@ -56,11 +56,27 @@ module.exports = (function() {
 
     update() {
 
-      Plan.update(this.params.route.id, this.params.body, (err, model) => {
+      this.authorize((accessToken, user) => {
 
-        this.respond(err || model);
+        let activities = this.params.body.activities;
 
-      });
+        delete this.params.body.activities;
+
+        Plan.update(this.params.route.id, this.params.body, (err, model) => {
+
+          activities.map((activity, i) => {
+
+            return Activity
+              .query({id: activity.activity_id})
+              .update({plan_id: model.get('id')})
+          })
+
+          this.respond(err || model);
+
+        });
+
+      })
+
 
     }
 
@@ -89,10 +105,16 @@ module.exports = (function() {
 
           let updatedActivities = activities.map((activity, i) => {
 
+            let updates = Object.assign({}, activity, {plan_id: model.get('id')});
+
+            delete updates.activity_id;
+
+            console.log('updates:',updates)
+
             return Activity
               .query({id: activity.activity_id})
-              .update({plan_id: model.get('id')}, (err, activity) => {
-                if (err) {console.log('error updateing activity:', err)}
+              .update(updates, (err, activity) => {
+                if (err) {console.log('error updating activity:', err)}
               });
           });
 
