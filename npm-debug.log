@@ -1,7 +1,5 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/Users/Neptune/.nvm/versions/node/v5.8.0/bin/node',
-1 verbose cli   '/Users/Neptune/.nvm/versions/node/v5.8.0/bin/npm',
-1 verbose cli   'start' ]
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
 2 info using npm@3.7.3
 3 info using node@v5.8.0
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
@@ -9,25 +7,25 @@
 6 silly lifecycle sweaty-figs@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle sweaty-figs@0.0.0~start: sweaty-figs@0.0.0
 8 verbose lifecycle sweaty-figs@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle sweaty-figs@0.0.0~start: PATH: /Users/Neptune/.nvm/versions/node/v5.8.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/Neptune/Documents/thesis/sweaty-figs-db/node_modules/.bin:/Users/Neptune/.nvm/versions/node/v5.8.0/bin:/usr/local/share/npm/lib/node_modules/grunt-cli/bin:/Users/Neptune/.nvm/versions/node/v5.8.0/bin:/Library/Frameworks/Python.framework/Versions/Current/bin:/usr/local/bin:/usr/pgsql-9.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin
-10 verbose lifecycle sweaty-figs@0.0.0~start: CWD: /Users/Neptune/Documents/thesis/sweaty-figs-db
+9 verbose lifecycle sweaty-figs@0.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/poseidon/Documents/groupProjects/sweaty-figs-db/node_modules/.bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres.app/Contents/Versions/latest/bin
+10 verbose lifecycle sweaty-figs@0.0.0~start: CWD: /Users/poseidon/Documents/groupProjects/sweaty-figs-db
 11 silly lifecycle sweaty-figs@0.0.0~start: Args: [ '-c', 'node cluster.js' ]
 12 silly lifecycle sweaty-figs@0.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle sweaty-figs@0.0.0~start: Failed to exec start script
 14 verbose stack Error: sweaty-figs@0.0.0 start: `node cluster.js`
 14 verbose stack Exit status 1
-14 verbose stack     at EventEmitter.<anonymous> (/Users/Neptune/.nvm/versions/node/v5.8.0/lib/node_modules/npm/lib/utils/lifecycle.js:239:16)
+14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:239:16)
 14 verbose stack     at emitTwo (events.js:100:13)
 14 verbose stack     at EventEmitter.emit (events.js:185:7)
-14 verbose stack     at ChildProcess.<anonymous> (/Users/Neptune/.nvm/versions/node/v5.8.0/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
 14 verbose stack     at emitTwo (events.js:100:13)
 14 verbose stack     at ChildProcess.emit (events.js:185:7)
 14 verbose stack     at maybeClose (internal/child_process.js:850:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
 15 verbose pkgid sweaty-figs@0.0.0
-16 verbose cwd /Users/Neptune/Documents/thesis/sweaty-figs-db
+16 verbose cwd /Users/poseidon/Documents/groupProjects/sweaty-figs-db
 17 error Darwin 15.4.0
-18 error argv "/Users/Neptune/.nvm/versions/node/v5.8.0/bin/node" "/Users/Neptune/.nvm/versions/node/v5.8.0/bin/npm" "start"
+18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
 19 error node v5.8.0
 20 error npm  v3.7.3
 21 error code ELIFECYCLE

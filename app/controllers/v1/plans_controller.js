@@ -56,11 +56,27 @@ module.exports = (function() {
 
     update() {
 
-      Plan.update(this.params.route.id, this.params.body, (err, model) => {
+      this.authorize((accessToken, user) => {
 
-        this.respond(err || model);
+        let activities = this.params.body.activities;
 
-      });
+        delete this.params.body.activities;
+
+        Plan.update(this.params.route.id, this.params.body, (err, model) => {
+
+          activities.map((activity, i) => {
+
+            return Activity
+              .query({id: activity.activity_id})
+              .update({plan_id: model.get('id')})
+          })
+
+          this.respond(err || model);
+
+        });
+
+      })
+
 
     }
 
@@ -83,34 +99,31 @@ module.exports = (function() {
 
         let activities = this.params.body.activities;
 
-        activities = JSON.parse(activities);
-
-        // console.log(typeof activities);
-
         delete this.params.body.activities;
 
         Plan.create(this.params.body, (err, model) => {
 
           let updatedActivities = activities.map((activity, i) => {
-            console.log('>>>>>>>>>>model is', model);
+
+            let updates = Object.assign({}, activity, {plan_id: model.get('id')});
+
+            delete updates.activity_id;
+
+            console.log('updates:',updates)
+
             return Activity
               .query({id: activity.activity_id})
-              .update({plan_id: model.get('id')}, (err, activity) => {
-                if (err) {console.log('error:', err)}
-                // console.log('activity updated!:', activity);
+              .update(updates, (err, activity) => {
+                if (err) {console.log('error updating activity:', err)}
               });
           });
-          // console.log(updatedActivities);
-          model = Object.assign(model, {activities: updatedActivities});
-          this.respond(err || model);
 
-          // if plan created, then update activities
+          model = Object.assign(model, {activities: updatedActivities});
+
+          this.respond(err || model);
 
         });
       });
-      // take activities from body
-      // take update activities
-
     }
   }
 
