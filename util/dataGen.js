@@ -119,6 +119,6 @@ module.exports = (function() {
     return JSON.stringify(mockPlans);
   }
 
-  // console.log(genPlans(5));
+  console.log(JSON.parse(genPlans(5)));
 
 })();
