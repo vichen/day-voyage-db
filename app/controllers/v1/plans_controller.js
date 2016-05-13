@@ -83,10 +83,6 @@ module.exports = (function() {
 
         let activities = this.params.body.activities;
 
-        activities = JSON.parse(activities);
-
-        // console.log(typeof activities);
-
         delete this.params.body.activities;
 
         Plan.create(this.params.body, (err, model) => {
