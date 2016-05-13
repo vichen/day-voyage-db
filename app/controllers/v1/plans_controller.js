@@ -88,25 +88,20 @@ module.exports = (function() {
         Plan.create(this.params.body, (err, model) => {
 
           let updatedActivities = activities.map((activity, i) => {
-            console.log('>>>>>>>>>>model is', model);
+
             return Activity
               .query({id: activity.activity_id})
               .update({plan_id: model.get('id')}, (err, activity) => {
-                if (err) {console.log('error:', err)}
-                // console.log('activity updated!:', activity);
+                if (err) {console.log('error updateing activity:', err)}
               });
           });
-          // console.log(updatedActivities);
-          model = Object.assign(model, {activities: updatedActivities});
-          this.respond(err || model);
 
-          // if plan created, then update activities
+          model = Object.assign(model, {activities: updatedActivities});
+
+          this.respond(err || model);
 
         });
       });
-      // take activities from body
-      // take update activities
-
     }
   }
 
