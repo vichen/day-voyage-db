@@ -36,25 +36,7 @@ module.exports = (function() {
 
     }
 
-    // create() {
-
-    //   console.log('<><><> inside create');
-    //   this.authorize((accessToken, user) => {
-
-    //     this.params.body.user_id = user.get('id');
-
-    //     Plan.create(this.params.body, (err, model) => {
-
-    //       this.respond(err || model);
-
-    //     });
-
-    //   })
-
-
-    // }
-
-    update() {
+    put() {
 
       this.authorize((accessToken, user) => {
 
@@ -64,19 +46,23 @@ module.exports = (function() {
 
         Plan.update(this.params.route.id, this.params.body, (err, model) => {
 
-          activities.map((activity, i) => {
+          let updatedActivities = activities.map((activity, i) => {
+
+            let updates = Object.assign({}, activity, {plan_id: model.get('id')});
+
+            delete updates.activity_id;
 
             return Activity
-              .query({id: activity.activity_id})
-              .update({plan_id: model.get('id')})
-          })
+              .update(activity.activity_id, updates, (err, activity) => {
+                if (err) console.log(err);
+            });
+          });
 
           this.respond(err || model);
 
         });
 
       })
-
 
     }
 
@@ -91,7 +77,6 @@ module.exports = (function() {
     }
 
     post() {
-      console.log('inside post <><><><>');
 
       this.authorize((accessToken, user) => {
 
@@ -109,16 +94,11 @@ module.exports = (function() {
 
             delete updates.activity_id;
 
-            console.log('updates:',updates)
-
             return Activity
-              .query({id: activity.activity_id})
-              .update(updates, (err, activity) => {
+              .update(activity.activity_id, updates, (err, activity) => {
                 if (err) {console.log('error updating activity:', err)}
               });
           });
-
-          model = Object.assign(model, {activities: updatedActivities});
 
           this.respond(err || model);
 
