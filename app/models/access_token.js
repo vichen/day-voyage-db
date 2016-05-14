@@ -49,7 +49,8 @@ module.exports = (function() {
               access_token: this.generateAccessTokenString(user.get('id'), user.get('email'), new Date().valueOf()),
               token_type: 'bearer',
               expires_at: (new Date(new Date().valueOf() + (30 * 24 * 60 * 60 * 1000))),
-              ip_address: params.ip_address
+              ip_address: params.ip_address,
+              username: user.get('username')
             }).save(callback);
 
           });
