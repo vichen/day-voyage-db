@@ -38,12 +38,12 @@
         {"name": "address", "type": "string", "properties": {}},
         {"name": "city", "type": "string", "properties": {}},
         {"name": "state", "type": "string", "properties": {}},
-        {"name": "neighborhood", "type": "string", "properties": {}},
+        {"name": "neighborhood", "type": "json", "properties": {}},
         {"name": "title", "type": "string", "properties": {}},
         {"name": "duration", "type": "int", "properties": {}},
         {"name": "costPerPerson", "type": "int", "properties": {}},
         {"name": "isYelp", "type": "boolean", "properties": {}},
-        {"name": "categories", "type": "string", "properties": {}},
+        {"name": "categories", "type": "json", "properties": {}},
         {"name": "created_at", "type": "datetime", "properties": {}},
         {"name": "updated_at", "type": "datetime", "properties": {}}
       ]
