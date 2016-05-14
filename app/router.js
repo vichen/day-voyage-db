@@ -35,6 +35,7 @@ module.exports = (function() {
   const V1PlansController = Nodal.require('app/controllers/v1/plans_controller.js');
   const V1ActivitiesController = Nodal.require('app/controllers/v1/activities_controller.js');
   const V1AccessTokensController = Nodal.require('app/controllers/v1/access_tokens_controller.js');
+  const V1CommentsController = Nodal.require('app/controllers/v1/comments_controller.js');
 
   /* generator: end imports */
 
@@ -46,6 +47,7 @@ module.exports = (function() {
   router.route('/v1/plans/{id}').use(V1PlansController);
   router.route('/v1/activities/{id}').use(V1ActivitiesController);
   router.route('/v1/access_tokens/{id}').use(V1AccessTokensController);
+  router.route('/v1/comments/{id}').use(V1CommentsController);
 
   /* generator: end routes */
 
