@@ -10,7 +10,6 @@ module.exports = (function() {
     index() {
 
       Comment.query()
-        .join('user', 'activity', 'plan')
         .where(this.params.query)
         .end((err, models) => {
 
