@@ -25,12 +25,12 @@ module.exports = (function() {
           {"name":"address","type":"string"},
           {"name":"city","type":"string"},
           {"name":"state","type":"string"},
-          {"name":"neighborhood","type":"string"},
+          {"name":"neighborhood","type":"json"},
           {"name":"title","type":"string"},
           {"name":"duration","type":"int"},
           {"name":"costPerPerson", "type":"int"},
           {"name": "isYelp", "type":"boolean"},
-          {"name": "categories", "type": "string"}])
+          {"name": "categories", "type": "json"}])
       ];
 
     }
