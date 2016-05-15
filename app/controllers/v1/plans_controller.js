@@ -83,6 +83,7 @@ module.exports = (function() {
         this.params.body.user_id = user.get('id');
 
         let activities = this.params.body.activities;
+        console.log(activities);
 
         delete this.params.body.activities;
 
@@ -92,10 +93,8 @@ module.exports = (function() {
 
             let updates = Object.assign({}, activity, {plan_id: model.get('id')});
 
-            delete updates.activity_id;
-
             return Activity
-              .update(activity.activity_id, updates, (err, activity) => {
+              .update(activity.id, updates, (err, activity) => {
                 if (err) {console.log('error updating activity:', err)}
               });
           });
