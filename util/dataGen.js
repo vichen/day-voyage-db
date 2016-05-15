@@ -103,6 +103,7 @@ module.exports = (function() {
       this.title = title;
       this.desc = desc;
       this.likes = likes;
+      this.private = false;
     }
   }
 
@@ -121,7 +122,7 @@ module.exports = (function() {
     return JSON.stringify(mockPlans);
   }
 
-  // console.log(JSON.parse(genPlans(5)));
+  console.log(genPlans(5));
 
   class Comment {
     constructor(content, user_id, activity_id, plan_id) {
