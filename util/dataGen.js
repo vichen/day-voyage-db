@@ -12,6 +12,8 @@ module.exports = (function() {
   // console.log(mockActivities);
   const mockPlansData = Nodal.require('mockData/mockPlans');
   // console.log(mockPlansData);
+  const mockComments = Nodal.require('mockData/mockComments').comments;
+  // console.log(mockComments);
 
 
   let activitySchema = ['plan_id', 'user_id', 'user_gen', 'private', 'desc', 'lat', 'long', 'address', 'city', 'state', 'neighborhood', 'title', 'duration'];
@@ -64,7 +66,7 @@ module.exports = (function() {
       let transformed = Object.create(null);
 
       transformed.title = activity.name;
-      transformed.categories = activity.categories[0];
+      transformed.categories = activity.categories;
       transformed.desc = activity.snippet_text;
       transformed.lat = activity.location.coordinate.latitude;
       transformed.long = activity.location.coordinate.longitude;
@@ -119,6 +121,32 @@ module.exports = (function() {
     return JSON.stringify(mockPlans);
   }
 
-  console.log(JSON.parse(genPlans(5)));
+  // console.log(JSON.parse(genPlans(5)));
+
+  class Comment {
+    constructor(content, user_id, activity_id, plan_id) {
+      this.content = content;
+      this.user_id = user_id;
+      this.activity_id = activity_id;
+      this.plan_id = plan_id;
+    }
+  }
+
+  const genComments = (n) => {
+    // store user id and content on all
+    // add a comment to 1/3 of the plans
+    n = mockComments.length < n ? mockComments.length : n;
+    let comments = [];
+
+    for (var i = 0; i < n; i++) {
+      let content = mockComments[i];
+      let user_id = Math.ceil(Math.random() * 10);
+      let activity_id = i % 3 !== 0 ? Math.ceil(Math.random() * 20) : null;
+      let plan_id = i % 3 === 0 ? Math.ceil(Math.random() * 5) : null;
+      comments.push(new Comment(content, user_id, activity_id, plan_id));
+    }
+    return JSON.stringify(comments);
+  }
+  // console.log(genComments(120));
 
 })();
