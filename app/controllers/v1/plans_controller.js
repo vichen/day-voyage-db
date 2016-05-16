@@ -109,6 +109,7 @@ module.exports = (function() {
               });
           });
 
+          model.set('activities', updatedActivities)
           this.respond(err || model);
 
         });
