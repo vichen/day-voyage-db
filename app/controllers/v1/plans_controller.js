@@ -14,9 +14,22 @@ module.exports = (function() {
       console.log('<><><> insided index');
 
       Plan.query()
-        .join('user','activity')
         .where(this.params.query)
         .end((err, models) => {
+
+          // iterate over models
+          // perform query activity
+          // attache them to the plan object as an activities property
+          //
+          models = models.map((model, i) => {
+            Activity.query()
+              .where({plan_id: model.get('id')})
+              .end((err, activities) => {
+                model.activities = activities;
+              })
+            });
+
+          console.log('>>>>>>>>>>>>',models);
 
           this.respond(err || models);
 
@@ -30,8 +43,15 @@ module.exports = (function() {
 
       Plan.find(this.params.route.id, (err, model) => {
 
-        this.respond(err || model);
+        Activity.query()
+          .where({plan_id: model.get('id')})
+          .end((err, activities) => {
+            // model.set('activities',activities);
 
+            console.log('activities are >>>>>', activities);
+            console.log('plan is >>>>>', plan);
+            this.respond(err || model);
+          });
       });
 
     }
