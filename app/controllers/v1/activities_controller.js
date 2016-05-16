@@ -10,7 +10,6 @@ module.exports = (function() {
 
     index() {
       Activity.query()
-        .join('user','plan')
         .where(this.params.query)
         .end((err, models) => {
 
