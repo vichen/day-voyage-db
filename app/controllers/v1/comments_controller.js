@@ -11,9 +11,11 @@ module.exports = (function() {
 
       Comment.query()
         .where(this.params.query)
+        .join('user')
+        .orderBy('created_at', 'DESC')
         .end((err, models) => {
 
-          this.respond(err || models);
+          this.respond(err || models, ['id', 'content','created_at', 'user_id', 'activity_id', 'plan_id', {user: ['id', 'username', 'created_at']}]);
 
         });
 
