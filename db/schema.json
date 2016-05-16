@@ -75,7 +75,9 @@
         {"name": "user_id", "type": "int", "properties": {}},
         {"name": "title", "type": "string", "properties": {}},
         {"name": "desc", "type": "string", "properties": {}},
+        {"name": "private", "type": "boolean", "properties": {}},
         {"name": "likes", "type": "int", "properties": {}},
+        {"name": "activities", "type": "json", "properties": {}},
         {"name": "created_at", "type": "datetime", "properties": {}},
         {"name": "updated_at", "type": "datetime", "properties": {}}
       ]

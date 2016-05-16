@@ -19,7 +19,10 @@ module.exports = (function() {
           // {"name":"activity_id","type":"int"},
           {"name":"title","type":"string"},
           {"name":"desc","type":"string"},
-          {"name":"likes","type":"int"}])
+          {"name":"private","type":"boolean"},
+          {"name":"likes","type":"int"},
+          {"name": "activities", "type":"json"}
+          ])
       ];
 
     }

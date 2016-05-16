@@ -11,27 +11,37 @@ module.exports = (function() {
 
     index() {
 
-      console.log('<><><> insided index');
-
       Plan.query()
-        .join('user','activity')
         .where(this.params.query)
         .end((err, models) => {
-
-          this.respond(err || models);
-
+          let modelsWithActivities = models.map((model, i) => {
+            Activity.query()
+              .where({plan_id: model.get('id')})
+              .end((err, activities) => {
+                activities = activities.toObject();
+                model.set('activities', activities);
+                console.log('model update with activities', activities);
+                console.log('model>>>>>', model.get('activities'));
+                if (i === models.length - 1) {
+                  this.respond(err || models);
+                }
+              });
+            });
         });
 
     }
 
     show() {
 
-      console.log('<><><> inside show');
-
       Plan.find(this.params.route.id, (err, model) => {
 
-        this.respond(err || model);
-
+        Activity.query()
+          .where({plan_id: model.get('id')})
+          .end((err, activities) => {
+            activities = activities.toObject();
+            model.set('activities', activities);
+            this.respond(err || model);
+          });
       });
 
     }
