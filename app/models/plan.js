@@ -11,8 +11,8 @@ module.exports = (function() {
   Plan.setDatabase(Nodal.require('db/main.js'));
   Plan.setSchema(Nodal.my.Schema.models.Plan);
 
-  Plan.joinsTo(Activity, {multiple:true});
-  Plan.joinsTo(User, {multiple:true});
+  // Plan.joinsTo(Activity, {multiple:true});
+  // Plan.joinsTo(User, {multiple:true});
 
   return Plan;
 

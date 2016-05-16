@@ -104,6 +104,7 @@ module.exports = (function() {
       this.desc = desc;
       this.likes = likes;
       this.private = false;
+      this.activities = [];
     }
   }
 

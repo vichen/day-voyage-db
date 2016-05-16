@@ -11,45 +11,35 @@ module.exports = (function() {
 
     index() {
 
-      console.log('<><><> insided index');
-
       Plan.query()
         .where(this.params.query)
         .end((err, models) => {
-
-          // iterate over models
-          // perform query activity
-          // attache them to the plan object as an activities property
-          //
-          models = models.map((model, i) => {
+          let modelsWithActivities = models.map((model, i) => {
             Activity.query()
               .where({plan_id: model.get('id')})
               .end((err, activities) => {
-                model.activities = activities;
-              })
+                activities = activities.toObject();
+                model.set('activities', activities);
+                console.log('model update with activities', activities);
+                console.log('model>>>>>', model.get('activities'));
+                if (i === models.length - 1) {
+                  this.respond(err || models);
+                }
+              });
             });
-
-          console.log('>>>>>>>>>>>>',models);
-
-          this.respond(err || models);
-
         });
 
     }
 
     show() {
 
-      console.log('<><><> inside show');
-
       Plan.find(this.params.route.id, (err, model) => {
 
         Activity.query()
           .where({plan_id: model.get('id')})
           .end((err, activities) => {
-            // model.set('activities',activities);
-
-            console.log('activities are >>>>>', activities);
-            console.log('plan is >>>>>', plan);
+            activities = activities.toObject();
+            model.set('activities', activities);
             this.respond(err || model);
           });
       });

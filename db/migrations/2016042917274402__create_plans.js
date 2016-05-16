@@ -20,7 +20,9 @@ module.exports = (function() {
           {"name":"title","type":"string"},
           {"name":"desc","type":"string"},
           {"name":"private","type":"boolean"},
-          {"name":"likes","type":"int"}])
+          {"name":"likes","type":"int"},
+          {"name": "activities", "type":"json"}
+          ])
       ];
 
     }
