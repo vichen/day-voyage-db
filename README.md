@@ -19,6 +19,13 @@ nodal s
 ```
 Your app should now be running on [localhost:8080](http://localhost:8080/).
 
+##Development##
+Mock data is included with the repository. To seed the database with mock date:
+```sh
+nodal db:prepare
+nodal db:migrate
+nodal db:seed
+
 ## Requirements
 - Nodal 0.1.0
 - Postgres 9.5.2.0
