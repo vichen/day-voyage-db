@@ -24,20 +24,33 @@ Your app should now be running on [localhost:8080](http://localhost:8080/).
 - Postgres 9.5.2.0
 
 ## Endpoints
+
 /v1/users
+
     +--- GET    --> get all users (use query params to match attributes)
+
     +--- POST   --> create user
+
     +--- PUT    --> update user
+
     +--- DELETE --> delete user
+
 /v1/users/{id}
+
     +--- GET    --> get user by id
 
 /v1/activities
+
     +--- GET    --> get all activities (use query params to match attributes)
+
     +--- POST   --> create activity
+
     +--- PUT    --> update activity
+
     +--- DELETE --> delete  activity
+
 /v1/activities/{id}
+
     +--- GET    --> get activity by id
 
 /v1/plans
