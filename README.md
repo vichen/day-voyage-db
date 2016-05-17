@@ -9,9 +9,7 @@ This repo is intended for use as an API to power [Good Times](https://github.com
 
 ## GettingStarted
 - [ ] Install [Nodal](https://github.com/keithwhor/nodal) globally
-
 - [ ] Install dependencies
-
 - [ ] Start server
 
 ```sh
