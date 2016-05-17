@@ -27,13 +27,10 @@ Your app should now be running on [localhost:8080](http://localhost:8080/).
 
 /v1/users
 
-    +--- GET    --> get all users (use query params to match attributes)
-
-    +--- POST   --> create user
-
-    +--- PUT    --> update user
-
-    +--- DELETE --> delete user
+GET    --> get all users (use query params to match attributes)
+POST   --> create user
+PUT    --> update user
+DELETE --> delete user
 
 /v1/users/{id}
 
